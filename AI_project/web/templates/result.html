@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            padding-top: 50px;
+        }
+        .container {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        .alert {
+            background-color: #333;
+            color: #e0e0e0;
+            border: 1px solid #555;
+        }
+        .alert-heading {
+            color: #fff;
+        }
+        .alert-link {
+            color: #bb86fc;
+        }
+        .alert-link:hover {
+            color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">Sentiment Analysis</span>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h1 class="mb-4">Result</h1>
+        {% if prediction %}
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Sentiment:</h4>
+            <p>The sentiment of the message is <strong>{{ 'positive' if prediction == '4' else 'negative' }}</strong>.</p>
+            <hr>
+            <p class="mb-0">Do you want to analyze another message? <a href="/" class="alert-link">Click here</a>.</p>
+        </div>
+        {% else %}
+        <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">Error:</h4>
+            <p>No sentiment prediction available.</p>
+            <hr>
+            <p class="mb-0">Please enter a message to analyze. <a href="/" class="alert-link">Go back</a>.</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
